@@ -1,0 +1,81 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin: none;
+    width: 100%;
+    padding: 25px 0px;
+    font-size: 32px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+}
+
+main {
+    width: 100%;
+    padding-top: 50px;
+    background-color: #edf0f5;
+    padding-bottom: 50px;
+}
+
+.projectList {
+    width: 85%;
+    margin: auto;
+    /* background-color: aqua; */
+}
+
+.project {
+    width: 100%;
+    margin: auto;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.projectTitle {
+    background-color: white;
+    border-radius: 5px 5px 0px 0px;
+    text-align: center;
+}
+
+.projectTitle h3 {
+    padding: 18px 18px 18px 18px;
+    margin: 0;
+}
+
+.investors {
+    background-color: #f8fae7;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px 0px;
+}
+
+.existing,
+.potential {
+    width: 45%;
+    background-color: white;
+    text-align: center;
+    padding: 30px 0px 40px 0px;
+}
+
+.investorCard {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+#existing {
+    background-color: rgb(223, 242, 195);
+    border: 2px solid green;
+
+}
+
+#potential {
+    background-color: rgb(213, 235, 249);
+    border: 2px solid blue;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Admin</title>
+    <link rel="stylesheet" href="css/projectAdmin.css">
+    <script>
+
+        //Get details of project handled by the admin
+        function getProjectDetails() {
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = this.responseText;
+                    // console.log(response);
+                    document.getElementById("projDets").innerHTML = response;
+                }
+            };
+            xmlhttp.open("GET", "php/projectDetails.php", true);
+            xmlhttp.send();
+        }
+
+
+        //Function to migrate investor from potential to existing on Button Click
+        //Sends respective investor details to PHP for further processing
+        function amountReceived(id) {
+            console.log(id);
+            var projectName = document.getElementById("projTitle").innerText;
+            console.log(projectName);
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = this.responseText;
+                    console.log(response);
+                    getProjectDetails();
+                }
+            };
+            xmlhttp.open("GET", "php/migrate.php?projectName=" + projectName + "&investorName=" + id, true);
+            xmlhttp.send();
+        }
+
+        //Function for Simple validation of inputs of "Add Investor" Form
+        function validateInput() {
+            var investorName = document.getElementById("investorName").value;
+            var amount = document.getElementById("amount").value;
+            if (investorName == "") {
+                document.getElementById("error").innerText = "Investor Name Required*";
+                return false;
+            }
+            else if (amount == "") {
+                document.getElementById("error").innerText = "Amount Required*";
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        //Function to add a new investor to potential investors list
+        function addInvestor() {
+            if (validateInput()) {
+                var investorName = document.getElementById("investorName").value;
+                var amount = document.getElementById("amount").value;
+                var projectName = document.getElementById("projTitle").innerText;
+                console.log("All good");
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var response = this.responseText;
+                        console.log(response);
+                        getProjectDetails();
+                    }
+                };
+                xmlhttp.open("GET", "php/addInvestor.php?investorName=" + investorName + "&amount=" + amount + "&projectName=" + projectName, true);
+                xmlhttp.send();
+            }
+        }
+
+        window.onload = getProjectDetails;
+    </script>
+</head>
+
+<body>
+    <header>Admin Page</header>
+    <main>
+        <div class="projectDetails" id="projDets">
+        </div>
+        <div class="addInvestorForm">
+            <h2>Add new potential Investor</h2>
+            <input type="text" id="investorName" placeholder="Enter Investor Name">
+            <input type="number" id="amount" placeholder="Enter Expected Amount">
+            <button id="addInvestor" onclick="addInvestor()">Add Investor</button>
+            <h4 id="error"></h4>
+        </div>
+    </main>
+
+</body>
+
+</html>

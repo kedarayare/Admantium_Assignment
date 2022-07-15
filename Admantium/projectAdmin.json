@@ -1,0 +1,16 @@
+[
+    {
+        "padmin1": {
+            "password": "admin",
+            "project": "Project1"
+        },
+        "padmin2": {
+            "password": "admin",
+            "project": "Project2"
+        },
+        "padmin3": {
+            "password": "admin",
+            "project": "Project3"
+        }
+    }
+]

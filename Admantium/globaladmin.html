@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Admin Page</title>
+    <link rel="stylesheet" href="css/globalAdmin.css">
+    <script>
+
+        //Function that gets list of Projects on page load
+
+        function getProjectList() {
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = this.responseText;
+                    console.log(response);
+                    document.getElementById("projectList").innerHTML = response;
+                }
+            };
+            xmlhttp.open("GET", "php/projectList.php", true);
+            xmlhttp.send();
+        }
+        window.onload = getProjectList;
+    </script>
+</head>
+
+<body>
+    <header>Admin Page</header>
+    <main>
+        <div class="projectList" id="projectList">
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+Global Admin - list of projects, list of investors and admin for each project
+Project Admin - list of investors(name, contact and amount invested), add new investor
+
+List of Investors - Existing and Potential(if yes in amount invested then move to existing)

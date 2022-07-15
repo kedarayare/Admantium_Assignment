@@ -1,0 +1,70 @@
+[
+    {
+        "Project1": {
+            "projectAdmin": "padmin1",
+            "investors": {
+                "existing": {
+                    "investor1_1": {
+                        "amount": "100000"
+                    },
+                    "investor1_2": {
+                        "amount": "200000"
+                    }
+                },
+                "potential": {
+                    "investor1_3": {
+                        "amount": "50000"
+                    }
+                }
+            }
+        },
+        "Project2": {
+            "projectAdmin": "padmin2",
+            "investors": {
+                "existing": {
+                    "investor2_1": {
+                        "amount": "300000"
+                    }
+                },
+                "potential": {
+                    "investor1_2": {
+                        "amount": "15000"
+                    },
+                    "investor1_3": {
+                        "amount": "10000000"
+                    }
+                }
+            }
+        },
+        "Project3": {
+            "projectAdmin": "padmin3",
+            "investors": {
+                "existing": {
+                    "investor3_1": {
+                        "amount": "100000"
+                    },
+                    "investor3_2": {
+                        "amount": "240000"
+                    },
+                    "investor3_3": {
+                        "amount": "280000"
+                    },
+                    "investor3_4": {
+                        "amount": "300000"
+                    }
+                },
+                "potential": {
+                    "investor3_5": {
+                        "amount": "50000"
+                    },
+                    "investor3_6": {
+                        "amount": "1150000"
+                    },
+                    "investor3_7": {
+                        "amount": "650000"
+                    }
+                }
+            }
+        }
+    }
+]

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+
+        //Variable to keep track of the login Option being choosen by the user
+        var loginRole = "global";
+
+
+        //Function that changes the role status and add/remove class to show option change
+        function roleChange(id) {
+            console.log("cicked button " + id)
+            if (id == "global") {
+                document.getElementById(id).classList.add("selectedRole");
+                loginRole = id;
+                document.getElementById("project").classList.remove("selectedRole");
+            } else {
+                document.getElementById(id).classList.add("selectedRole");
+                loginRole = id;
+                document.getElementById("global").classList.remove("selectedRole");
+
+            }
+            console.log("Current role " + loginRole)
+        }
+
+        //Function to do simple validation of inputs
+        function validateInput() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            if (username == "") {
+                document.getElementById("error").innerText = "Username Required";
+                return false;
+            }
+            else if (password == "") {
+                document.getElementById("error").innerText = "Password Required";
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+
+        //Login Function
+        //Sends Credentials to PHP file and if success navigates to respective admin page
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            if (validateInput()) {
+                console.log("Validation Success");
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var response = this.responseText;
+                        console.log(response);
+                        if (response == "Success") {
+                            var url = loginRole + "Admin.html";
+                            window.location = url;
+                        }
+                        else {
+                            document.getElementById("error").innerText = response;
+                        }
+                    }
+                };
+                xmlhttp.open("GET", "php/login.php?username=" + username + "&password=" + password + "&role=" + loginRole, true);
+                xmlhttp.send();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="loginBox">
+        <div class="loginRole">
+            <h3>Login as:</h3>
+            <button class="role selectedRole" id="global" onclick="roleChange(this.id)">Global Admin</button>
+            <button class="role" id="project" onclick="roleChange(this.id)">Project Admin</button>
+        </div>
+        <div class="loginForm">
+            <input type="text" name="username" id="username" placeholder="Enter Username" required>
+            <input type="password" name="password" id="password" placeholder="Enter Password" required>
+            <input type="submit" id="submit" onclick="login()">
+            <h4 id="error"></h4>
+        </div>
+    </div>
+</body>
+
+</html>
